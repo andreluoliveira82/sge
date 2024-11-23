@@ -20,7 +20,7 @@ class BrandListView(ListView):
         """
         Filtra o queryset com base no parâmetro 'name' na query string.
         """
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().order_by("id")
         name = self.request.GET.get("name")
         if name:
             queryset = queryset.filter(name__icontains=name)

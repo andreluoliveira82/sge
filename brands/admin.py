@@ -27,4 +27,3 @@ class BrandsAdmin(admin.ModelAdmin):
         list_per_page = 10
         list_max_show_all = 100
         date_hierarchy = "created_at"
-        
