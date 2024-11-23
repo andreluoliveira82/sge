@@ -6,23 +6,19 @@ from products.models import Product
 class Inflow(models.Model):
     """Gerencia entradas de produtos."""
 
-    supplier = (
-        models.ForeignKey(
-            Supplier,
-            on_delete=models.PROTECT,
-            verbose_name="Fornecedor",
-            related_name="inflows",
-        ),
+    supplier = models.ForeignKey(
+        Supplier,
+        on_delete=models.PROTECT,
+        verbose_name="Fornecedor",
+        related_name="inflows",
     )
-    product = (
-        models.ForeignKey(
-            Product,
-            on_delete=models.PROTECT,
-            verbose_name="Produto",
-            related_name="inflows",
-        ),
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.PROTECT,
+        verbose_name="Produto",
+        related_name="inflows",
     )
-    quantity = (models.IntegerField(verbose_name="Quantidade"),)
+    quantity = models.IntegerField(verbose_name="Quantidade")
     descripition = models.TextField(verbose_name="Descrição", null=True, blank=True)
     created_at = models.DateTimeField(verbose_name="Criado em", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Atualizado em", auto_now=True)

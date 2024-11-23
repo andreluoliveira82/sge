@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "products",
     "inflows",
     "outflows",
-
     # 3rd party apps
     #
     # apps from django
@@ -65,7 +64,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["core/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

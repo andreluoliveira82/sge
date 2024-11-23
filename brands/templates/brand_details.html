@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} SGE - Detalhes da Marca {% endblock title %}
+
+{% block content %}
+
+ <div class="container mt-6">
+			<h3 class="display-6">Detalhes da Marca</h3>
+		
+		<div class="card">
+				<div class="card-body">
+					<h3 class="card-title">{{ brand.name }}</h3>
+					<p class="card-text">{{ brand.description }}</p>
+					<p class="card-text" style="font-size: 12px;">Criação: {{ brand.created_at }}</p>
+					<p class="card-text" style="font-size: 12px;">Última Atualização: {{ brand.updated_at }}</p>
+				</div>
+		</div>
+
+		<!-- Botão para cancelar e voltar -->
+		<a href="{% url 'brand_list' %}" class="btn btn-secondary mt-3">
+			<i class="bi bi-arrow-left-circle"></i> Voltar
+		</a> 
+	</div>
+
+{% endblock content %}

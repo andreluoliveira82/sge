@@ -10,7 +10,7 @@ class BrandsAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
     )
-    list_filter = ("name",)
+    list_filter = ("name", "description",)
     search_fields = (
         "name",
         "description",
