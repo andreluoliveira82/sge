@@ -19,7 +19,7 @@ class Inflow(models.Model):
         related_name="inflows",
     )
     quantity = models.IntegerField(verbose_name="Quantidade")
-    descripition = models.TextField(verbose_name="Descrição", null=True, blank=True)
+    description = models.TextField(verbose_name="Descrição", null=True, blank=True)
     created_at = models.DateTimeField(verbose_name="Criado em", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Atualizado em", auto_now=True)
 

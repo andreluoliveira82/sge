@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} SGE - Cadastrar produto {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-2"> <!-- Ajustar a margem superior -->
+  <h3 class="display-6">Cadastrar produto</h3>
+
+  <div class="card">
+    <div class="card-body">
+
+      <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renderiza o formulário com os campos ajustados -->
+
+        <button class="btn btn-primary" type="submit">
+          <i class="bi bi-save"></i> Salvar
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Botão para cancelar e voltar -->
+  <a href="{% url 'product_list' %}" class="btn btn-secondary mt-3">
+    <i class="bi bi-x-circle"></i> Cancelar
+  </a>
+</div>
+
+{% endblock content %}

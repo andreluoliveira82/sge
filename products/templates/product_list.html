@@ -1,0 +1,114 @@
+<!-- importando o template base -->
+{% extends 'base.html' %}
+
+{% block title %} SGE - Produtos {% endblock title %}
+
+{% block content %}
+
+<div class="container text-center">
+  <h1 class="display-6">Lista de Produtos</h1>
+</div>
+
+<div class="row mb-3">
+
+  <!-- caixa de pesquisa -->
+  <div class="col-md-6">
+    <form action="{% url 'product_list' %}" method="GET">
+      <div class="input-group">
+        <input type="text" name="name" value="{{ request.GET.name }}" class="form-control"
+          placeholder="Nome do produto">
+
+        <input type="text" name="serie_number" value="{{ request.GET.serie_number }}" class="form-control ms-1"
+          placeholder="Número de série">
+
+        <button class="btn btn-primary ms-1" type="submit">
+          <i class="bi bi-search"></i> Pesquisar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Botão para a página de cadastro -->
+  <div class="col-md-6">
+    <a href="{% url 'product_create' %}" class="btn btn-success float-end">
+      <i class="bi bi-plus-circle"></i> Cadastrar Produto
+    </a>
+  </div>
+</div>
+
+<!-- Filtos adicionais categoria e marca -->
+<div class="row mb-3">
+  <div class="col-md-6">
+    <form action="{% url 'product_list' %}" method="GET">
+      <div class="input-group">
+        <select class="form-select" name="category" id="">
+          <option value="" {% if not request.GET.category %} selected {% endif %}>Todas as categorias </option>
+          {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+
+        <select class="form-select ms-1" name="brand" id="">
+          <option value="" {% if not request.GET.brand %} selected {% endif %}>Todas as marcas </option>
+          {% for brand in brands %}
+          <option value="{{ brand.id }}">{{ brand.name }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary ms-1">
+          <i class="bi bi-filter"></i> Filtrar
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- Tabela -->
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Título</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Número de Série</th>
+        <th scope="col">Estoque</th>
+        <th scope="col">Preço de Venda</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.serie_number }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.salling_price }}</td>
+        <td>
+          <a href="{% url 'product_details' product.id %}" class="btn btn-info btn-sm">
+            <i class="bi bi-info-circle"></i>
+          </a>
+
+          <a href="{% url 'product_update' product.id %}" class="btn btn-warning btn-sm">
+            <i class="bi bi-pencil-square"></i>
+          </a>
+
+          <a href="{% url 'product_delete' product.id %}" class="btn btn-danger btn-sm">
+            <i class="bi bi-trash3"></i>
+          </a>
+
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% include 'components/_pagination.html' %}
+
+</div>
+{% endblock content %}
