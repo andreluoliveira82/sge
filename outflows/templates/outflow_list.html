@@ -39,9 +39,9 @@
         <th scope="col">#</th>
         <th scope="col">Produto</th>
         <th scope="col">Fornecedor</th>
-        <th scope="col">Quantidade</th>
+        <th scope="col" class="text-center">Quantidade</th>
         <th scope="col">Data da Saída</th>
-        <th scope="col">Ações</th>
+        <th scope="col" class="text-center">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -50,9 +50,9 @@
         <td>{{ outflow.id }}</td>
         <td>{{ outflow.product }}</td>
         <td>{{ outflow.supplier }}</td>
-        <td>{{ outflow.quantity }}</td>
+        <td class="text-center">{{ outflow.quantity }}</td>
         <td>{{ outflow.created_at }}</td>
-        <td>
+        <td class="text-center">
           <a href="{% url 'outflow_details' outflow.id %}" class="btn btn-info btn-sm">
             <i class="bi bi-info-circle"></i>
           </a>
